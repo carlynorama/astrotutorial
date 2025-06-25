@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import BlogPostListItem from '../../components/BlogPostListItem.astro'
+const allPosts = await getCollection("books")
+const pageTitle = "Book List";
+---
+<BaseLayout pageTitle={pageTitle} >
+    <p>This is where I will post a list of books.</p>
+    <ul>
+      {allPosts.map((post: any) => (
+      <BlogPostListItem url={`/books/${post.id}/`} title={post.data.title} />
+      ))}
+    </ul>
+</BaseLayout>
