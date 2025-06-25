@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import BlogPostListItem from '../../components/BlogPostListItem.astro'
+import CollectionTagCloud from '../../components/CollectionTagCloud.astro'
 const allPosts = await getCollection("books")
 const pageTitle = "Book List";
 ---
@@ -12,4 +13,5 @@ const pageTitle = "Book List";
       <BlogPostListItem url={`/books/${post.id}/`} title={post.data.title} />
       ))}
     </ul>
+    <CollectionTagCloud collectionName = "books" />
 </BaseLayout>
